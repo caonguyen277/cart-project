@@ -1,0 +1,86 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+p{
+    margin: 0px;
+    padding: 0px;
+}
+#curve{
+    position: absolute;
+    top: -185px;
+    z-index: -1;
+}
+
+
+.h3-menu-website{
+    color: #616040;   
+    padding: 20px;
+    border-bottom: 1px solid #616040;
+}
+
+.menu-website{
+    list-style: none;
+}
+
+.menu-website  li  a{
+    display: block;
+    text-decoration: none;
+    color: #616040;
+    padding: 20px 0px;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 10px;
+    transition: all .3s;
+    background-color: #53508e26;
+    border-radius: 5px;
+}
+.menu-website > li > a:hover{
+    background-color: beige;
+    color: #232319;
+}
+
+/* ====================Product=================================== */
+.section-center{
+    background-color: beige;
+    padding-bottom: 20px;
+}
+.product{
+    text-align: center;
+    align-items: center;
+    height: 175px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px 0px rgb(153 152 152);
+}
+.img-product{
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in-out;
+}
+
+.picture-title{
+    color: wheat;
+    font-size: 120%;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,50%);
+    transition: all .3s ease-in-out;
+}
+
+.product:hover .picture-title{
+    opacity: 1;
+    transform: translate(-50%,-50%);
+}
+.product:hover .img-product{
+    transform: scale(1.1);
+    filter: brightness(55%) blur(2px);
+}
+/* ===================================================================== */
+.banner-container{
+    padding: 100px 0;
+}
+
