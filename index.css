@@ -102,6 +102,14 @@ p{
     width: 25%;
     height: 75px;
 }
+.section-cart-notification{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 120%;
+    display: block;
+}
 /* ====================Product=================================== */
 .section-center{
     background-color: beige;

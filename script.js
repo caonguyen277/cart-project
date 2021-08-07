@@ -148,6 +148,8 @@ const sectionCenter = document.querySelector('.section-center');
 
 const sectionCart = document.querySelector('.section-cart');
 
+const cartNotification = document.querySelector('.section-cart-notification');
+
 const btnCategory = document.querySelectorAll('.name-product');
 
 const arrProductCart = [];
@@ -157,10 +159,8 @@ const numberCart = document.querySelector('.number-cart');
 let totalCart = 0;
 window.onload = () => {
     displayMenuItem(menu);
-    const products = document.querySelectorAll('.product-section');
-    renderProductCart(products);
-    
-   
+    const products = document.querySelectorAll('.product-section');;
+    renderProductCart(products);     
 }
 
 const numberTotalCart = (category) => {
@@ -182,6 +182,7 @@ const renderProductCart = (products) => {
             let productItem = menu[index];
             arrProductCart.push(productItem);
             renderProduct(arrProductCart);
+            text = sectionCart.innerHTML;
         })})
 }
 btnCategory.forEach( (item,index) => {
