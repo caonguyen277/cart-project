@@ -40,7 +40,68 @@ p{
     background-color: beige;
     color: #232319;
 }
+/* =======================Cart-product============================== */
+.section-cart{
+    border-radius: 5px;
+    position: absolute;
+    background-color: #f5f5dc;
+    z-index: 1;
+    width: 530px;
+    min-height: 500px;
+    padding: 15px 20px;
+    left: -250px;
+    overflow: hidden;
+    box-shadow: 3px 3px 10px 0px rgb(153 152 152);
+    opacity: 0;
+    cursor: none;
+    visibility: hidden;
+    transition: all .2s ease-in;
+}
 
+.cart{
+    position: absolute;
+    right: 250px;
+    top: 75px;
+    z-index: 1;
+    cursor: pointer;
+}
+.cart > i{
+    color: #616040;
+}
+
+.cart:hover .section-cart{
+    opacity: 1;
+    visibility: visible;
+    cursor: default;
+}
+.number-cart{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    top: -50%;
+    right: -50%;
+    background-color: #f4f4db;
+}
+
+
+.product-cart{
+    padding: 5px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+    border-bottom: 1px solid #616040;
+}
+
+.product-cart > img{
+    width: 25%;
+    height: 75px;
+}
 /* ====================Product=================================== */
 .section-center{
     background-color: beige;
