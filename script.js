@@ -148,58 +148,80 @@ const sectionCenter = document.querySelector('.section-center');
 
 const sectionCart = document.querySelector('.section-cart');
 
+const cartItem = document.querySelector('.cart');
+
 const cartNotification = document.querySelector('.section-cart-notification');
 
 const btnCategory = document.querySelectorAll('.name-product');
 
-const arrProductCart = [];
+let arrProductCart = [];
+
+let btnDelete = [];
 
 const numberCart = document.querySelector('.number-cart');
+let products = [];
 
 let totalCart = 0;
 window.onload = () => {
     displayMenuItem(menu);
-    const products = document.querySelectorAll('.product-section');;
-    renderProductCart(products);     
+    products = document.querySelectorAll('.product-section');
+    btnCategory.forEach( (item,index) => {
+        item.addEventListener('click',(event) => {
+            const category = event.currentTarget.dataset.id;
+            const menuCategory = menu.filter((menuItem) => {
+                if(menuItem.category === category){
+                    return menuItem;
+                }
+            })
+            if(category === 'all'){
+                displayMenuItem(menu);
+            }
+            else
+                displayMenuItem(menuCategory);
+            products = document.querySelectorAll('.product-section');
+            renderProductCart(products);
+            
+        })
+    })
+    renderProductCart(products);
 }
 
-const numberTotalCart = (category) => {
-    if(category === "add")
-    totalCart++;
-    else
-    totalCart--;
-    numberCart.innerHTML = totalCart ;
+cartItem.addEventListener('click', () => {
+    btnDelete.forEach( (btnD,index) => {
+        btnD.addEventListener( 'click', (e) => {
+            const idProduct = e.currentTarget.dataset.id;
+            const index = Number(idProduct) - 1 ;
+            arrProductCart.splice(index,1,"");
+            renderProduct(arrProductCart);
+            numberTotalCart(arrProductCart.length);
+        })
+    })
+})
+
+
+const numberTotalCart = (length) => {
+    numberCart.innerHTML = length + 1 ;
 }
-const updateProductCart = () => {
-    renderProductCart();
-}
+
 const renderProductCart = (products) => {    
     products.forEach((product,index) => {
         product.addEventListener('click', (e) =>{
-            numberTotalCart("add");
             const idProduct = e.currentTarget.dataset.id;
             const index = Number(idProduct) - 1 ;
             let productItem = menu[index];
-            arrProductCart.push(productItem);
+            let text = false;
+            arrProductCart.forEach((item,index) => {
+                if(item.stt === productItem.stt)
+                    text = true;
+            })
+            if(text === false){
+                numberTotalCart(arrProductCart.length);
+                arrProductCart.push(productItem);
+            }
             renderProduct(arrProductCart);
-            text = sectionCart.innerHTML;
         })})
 }
-btnCategory.forEach( (item,index) => {
-    item.addEventListener('click',(event) => {
-        const category = event.currentTarget.dataset.id;
-        const menuCategory = menu.filter((menuItem) => {
-            if(menuItem.category === category){
-                return menuItem;
-            }
-        })
-        if(category === 'all'){
-            displayMenuItem(menu);
-        }
-        else
-            displayMenuItem(menuCategory);
-    })
-})
+
 
 const displayMenuItem = (menuItem) => {
     let displayMenu = menuItem.map((item) => {
@@ -225,8 +247,8 @@ const renderProduct = (productItem) => {
                         <p class="p-category">Category: ${item.category}</p>
                         <p class="p-price">Price: ${item.price} $</p>
                         <div class = "btn-cart">
-                            <button style="background-color: #616040; color: white;" class="btn btn-buy">Buy</button>
-                            <button style="background-color: #616040; color: white;" class="btn btn-delete">Delete</button>
+                            <button data-id = ${item.stt} style="background-color: #616040; color: white;" class="btn btn-buy">Buy</button>
+                            <button data-id = ${item.stt} style="background-color: #616040; color: white;" class="btn btn-delete">Delete</button>
                         </div>
                     </div>`;
     })
