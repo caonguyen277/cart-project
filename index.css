@@ -153,4 +153,31 @@ p{
 .banner-container{
     padding: 100px 0;
 }
-
+.show-xs{ 
+    display: none;
+}
+.menu{
+    position: absolute !important;
+    top: 70px;
+    z-index: 3;
+}
+.menu-website > li > a{
+    width: 402px;
+    padding: 20px 30px;
+}
+@media (max-width: 575.98px) { 
+    .cart{
+        right: 30px;
+        top: 70px;
+    }
+    .set-xs{
+        display: none;
+    }
+    .show-xs{
+        display: block;
+    }
+    .section-cart{
+        width: 402px;
+       left: -343px;
+    }
+ }
