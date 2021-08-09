@@ -196,7 +196,6 @@ window.addEventListener('click', (e) => {
     if(e.target == imageCart){
         sectionCart.classList.toggle("show");
     }
-    
 }) 
 
 
