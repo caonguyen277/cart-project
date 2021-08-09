@@ -196,6 +196,7 @@ window.addEventListener('click', (e) => {
     if(e.target == imageCart){
         sectionCart.classList.toggle("show");
     }
+    
 }) 
 
 
@@ -256,11 +257,14 @@ const renderProductInCart = (productItem) => {
                         <p class="p-category">Category: ${item.category}</p>
                         <p class="p-price">Price: ${item.price} $</p>
                         <div class = "btn-cart">
-                            <button data-id = ${item.stt} style="background-color: #616040; color: white;" class="btn btn-buy">Buy</button>
-                            <button data-id = ${item.stt} style="background-color: #616040; color: white;" class="btn btn-delete">Delete</button>
+                            <button data-id = ${item.stt} style="background-color: black; color: white;" class="btn btn-buy">Buy</button>
+                            <button data-id = ${item.stt} style="background-color: black; color: white;" class="btn btn-delete">Delete</button>
                         </div>
                     </div>`;
     })
     render = render.join("");
+    if(render !== "")
     sectionCart.innerHTML = render;
+    if(render == "")
+    sectionCart.innerHTML = `<h1 class = section-cart-notification>Don't have product</h1>`
 }
