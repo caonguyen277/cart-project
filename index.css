@@ -51,29 +51,36 @@ p{
     padding: 15px 20px;
     left: -250px;
     overflow: hidden;
-    box-shadow: 3px 3px 10px 0px rgb(153 152 152);
+    box-shadow: 3px 3px 10px 0px rgb(153 152 152);   
+    transition: all .2s ease-in;
     opacity: 0;
     cursor: none;
     visibility: hidden;
-    transition: all .2s ease-in;
 }
 
+.show{
+    opacity: 1;
+    cursor: default;
+    visibility: visible;
+}
 .cart{
     position: absolute;
-    right: 250px;
+    right: 390px;
     top: 75px;
     z-index: 1;
     cursor: pointer;
 }
 .cart > i{
     color: #616040;
+    z-index: 2;
 }
 
-.cart:hover .section-cart{
+/* .cart:active .section-cart{
     opacity: 1;
     visibility: visible;
     cursor: default;
-}
+} */
+
 .number-cart{
     position: absolute;
     width: 25px;

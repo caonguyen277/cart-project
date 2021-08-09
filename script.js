@@ -156,12 +156,13 @@ const btnCategory = document.querySelectorAll('.name-product');
 
 let arrProductCart = [];
 
-let btnDelete = [];
-
 const numberCart = document.querySelector('.number-cart');
 let products = [];
 
+let btnDelete = [];
+
 let totalCart = 0;
+
 window.onload = () => {
     displayMenuItem(menu);
     products = document.querySelectorAll('.product-section');
@@ -187,16 +188,19 @@ window.onload = () => {
 }
 
 cartItem.addEventListener('click', () => {
+    sectionCart.classList.toggle("show");
+    renderProduct(arrProductCart);
+    btnDelete = document.querySelectorAll('.btn-delete'); 
     btnDelete.forEach( (btnD,index) => {
         btnD.addEventListener( 'click', (e) => {
-            const idProduct = e.currentTarget.dataset.id;
-            const index = Number(idProduct) - 1 ;
-            arrProductCart.splice(index,1,"");
+            e.currentTarget.parentElement.parentElement.remove();
+            arrProductCart.splice(index,1);
             renderProduct(arrProductCart);
-            numberTotalCart(arrProductCart.length);
+            numberTotalCart(arrProductCart.length-1);
         })
-    })
+    })  
 })
+
 
 
 const numberTotalCart = (length) => {
