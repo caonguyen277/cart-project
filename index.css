@@ -173,6 +173,7 @@ p{
 .menu{
     position: absolute !important;
     top: 70px;
+    left: 10px;
     z-index: 3;
 }
 .menu-website > li > a{
