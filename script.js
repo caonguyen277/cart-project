@@ -150,6 +150,7 @@ const sectionCart = document.querySelector('.section-cart');
 
 const cartItem = document.querySelector('.cart');
 
+const imageCart = document.querySelector('.item-cart');
 const cartNotification = document.querySelector('.section-cart-notification');
 
 const btnCategory = document.querySelectorAll('.name-product');
@@ -187,25 +188,29 @@ window.onload = () => {
     renderProductCart(products);
 }
 
+const numberTotalCart = (length) => {
+    numberCart.innerHTML = length + 1 ;
+}
+
+window.addEventListener('click', (e) => {
+    if(e.target == imageCart){
+        sectionCart.classList.toggle("show");
+    }
+}) 
+
+
 cartItem.addEventListener('click', () => {
-    sectionCart.classList.toggle("show");
-    renderProduct(arrProductCart);
+    renderProductInCart(arrProductCart);
     btnDelete = document.querySelectorAll('.btn-delete'); 
     btnDelete.forEach( (btnD,index) => {
         btnD.addEventListener( 'click', (e) => {
             e.currentTarget.parentElement.parentElement.remove();
             arrProductCart.splice(index,1);
-            renderProduct(arrProductCart);
+            renderProductInCart(arrProductCart);
             numberTotalCart(arrProductCart.length-1);
         })
     })  
 })
-
-
-
-const numberTotalCart = (length) => {
-    numberCart.innerHTML = length + 1 ;
-}
 
 const renderProductCart = (products) => {    
     products.forEach((product,index) => {
@@ -222,7 +227,7 @@ const renderProductCart = (products) => {
                 numberTotalCart(arrProductCart.length);
                 arrProductCart.push(productItem);
             }
-            renderProduct(arrProductCart);
+            renderProductInCart(arrProductCart);
         })})
 }
 
@@ -244,7 +249,7 @@ const displayMenuItem = (menuItem) => {
     sectionCenter.innerHTML= displayMenu;
 }
 
-const renderProduct = (productItem) => {
+const renderProductInCart = (productItem) => {
     let render = productItem.map((item) => {
         return      `<div class="product-cart">
                         <img src= ${item.src} alt="">
