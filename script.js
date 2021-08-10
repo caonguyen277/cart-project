@@ -151,6 +151,13 @@ const sectionCart = document.querySelector('.section-cart');
 const cartItem = document.querySelector('.cart');
 
 const imageCart = document.querySelector('.item-cart');
+
+const close = document.getElementsByClassName("close")[0];
+
+const close_footer = document.getElementsByClassName("close-footer")[0];
+
+const order = document.getElementsByClassName("order")[0];
+
 const cartNotification = document.querySelector('.section-cart-notification');
 
 const btnCategory = document.querySelectorAll('.name-product');
@@ -164,6 +171,7 @@ let btnDelete = [];
 
 let totalCart = 0;
 
+const modal = document.querySelector('.modal');
 window.onload = () => {
     displayMenuItem(menu);
     products = document.querySelectorAll('.product-section');
@@ -193,24 +201,41 @@ const numberTotalCart = (length) => {
 }
 
 window.addEventListener('click', (e) => {
-    if(e.target == imageCart){
-        sectionCart.classList.toggle("show");
+    if(e.target == modal){
+        modal.style.display = "none";
     }
 }) 
 
 
-cartItem.addEventListener('click', () => {
-    renderProductInCart(arrProductCart);
-    btnDelete = document.querySelectorAll('.btn-delete'); 
-    btnDelete.forEach( (btnD,index) => {
-        btnD.addEventListener( 'click', (e) => {
+cartItem.onclick = () => {
+    console.log(arrProductCart);
+    modal.style.display = "block";
+    btnDelete = document.querySelectorAll('.btn-delete');  
+    btnDelete.forEach((btn,index) => {
+        btn.onclick = (e) => {
             e.currentTarget.parentElement.parentElement.remove();
-            arrProductCart.splice(index,1);
-            renderProductInCart(arrProductCart);
-            numberTotalCart(arrProductCart.length-1);
-        })
-    })  
-})
+            const idProduct = e.currentTarget.dataset.id;
+            arrProductCart = arrProductCart.filter((item) => {
+                if(item.stt != idProduct){
+                    return item;
+                }
+            })   
+            numberTotalCart(arrProductCart.length - 1);
+        }
+    })
+}
+
+close.onclick = () => {
+    modal.style.display = "none";
+}
+close_footer.onclick = () => {
+    modal.style.display = "none";
+}
+order.onclick = () =>  {
+    alert("Cảm ơn bạn đã thanh toán đơn hàng")
+}
+
+
 
 const renderProductCart = (products) => {    
     products.forEach((product,index) => {
