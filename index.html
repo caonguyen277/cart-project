@@ -13,34 +13,33 @@
     <title>Document</title>
 </head>
 <body>
-         
-        <div class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Giỏ Hàng</h5>
-                    <span class="close">&times;</span>
-                </div>
-                <div class="section-cart">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary close-footer">Đóng</button>
-                    <button type="button" class="btn btn-primary order">Thanh Toán</button>
-                </div>    
+    <div class="wellcome">
+        <img class="img-fluid" src="data:image/png;base64,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" alt="">
+    </div>
+    <div class="cart">
+        <i class=" item-cart fas fa-cart-plus fa-2x"></i>
+        <div class="number-cart">0</div>   
+    </div> 
+    <div class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Giỏ Hàng</h5>
+                <span class="close">&times;</span>
             </div>
+            <div class="section-cart">
+                
+            </div>
+            <div class="modal-footer">
+                <button style="background-color: #e4dfd8;" type="button" class="btn close-footer">Đóng</button>
+                <button style="background-color: bisque;" type="button" class="btn order">Thanh Toán</button>
+            </div>    
         </div>
-            
-        </div>    
-    <nav class="navbar navbar-expand-lg navbar-light">
+    </div>
+    <section class="nav-bar">
         <div class="container">
             <h2 class="set-title">Comfy <span>Website</span></h2>
-            <div class="cart">
-                <i class=" item-cart fas fa-cart-plus fa-2x"></i>
-                <div class="number-cart">0</div>   
-            </div> 
         </div>
-        </div>
-    </nav> 
+    </section>
 
     <section class="product-container">
         <div class="container-fluid">
@@ -53,7 +52,7 @@
                             <li><a data-id = "websale" class="name-product" href="#">Web sales</a></li>
                             <li><a data-id = "webgame" class="name-product" href="#">Web game</a></li>
                             <li><a data-id = "webcompany"class="name-product" href="#">Company website</a></li>
-                            <li><a data-id = "foodweb" class="name-product" href="#">food web</a></li>
+                            <li><a data-id = "foodweb" class="name-product" href="#">Food web</a></li>
                             <li><a data-id = "cookingweb" class="name-product" href="#">Cooking web</a></li>
                         </ul>
                     </div>
@@ -69,7 +68,7 @@
                             <li><a data-id = "websale" class="name-product" href="#">Web sales</a></li>
                             <li><a data-id = "webgame" class="name-product" href="#">Web game</a></li>
                             <li><a data-id = "webcompany"class="name-product" href="#">Company website</a></li>
-                            <li><a data-id = "foodweb" class="name-product" href="#">food web</a></li>
+                            <li><a data-id = "foodweb" class="name-product" href="#">Food web</a></li>
                             <li><a data-id = "cookingweb" class="name-product" href="#">Cooking web</a></li>
                         </ul>
                     </div>

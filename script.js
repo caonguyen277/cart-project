@@ -144,6 +144,8 @@ const menu = [
         category: "cookingweb",
     },
 ]
+
+const wellcome = document.querySelector('.wellcome')
 const sectionCenter = document.querySelector('.section-center');    
 
 const sectionCart = document.querySelector('.section-cart');
@@ -169,10 +171,15 @@ let products = [];
 
 let btnDelete = [];
 
+let btnBuy = [];
+
 let totalCart = 0;
+
 
 const modal = document.querySelector('.modal');
 window.onload = () => {
+    wellcome.style.transform = "translateX(-320px)";
+    setTimeout(() => { wellcome.style.transform = "translateX(0)";}, 1000);
     displayMenuItem(menu);
     products = document.querySelectorAll('.product-section');
     btnCategory.forEach( (item,index) => {
@@ -208,9 +215,10 @@ window.addEventListener('click', (e) => {
 
 
 cartItem.onclick = () => {
-    console.log(arrProductCart);
+    renderProductInCart(arrProductCart);
     modal.style.display = "block";
     btnDelete = document.querySelectorAll('.btn-delete');  
+    btnBuy = document.querySelectorAll('.btn-buy');
     btnDelete.forEach((btn,index) => {
         btn.onclick = (e) => {
             e.currentTarget.parentElement.parentElement.remove();
@@ -220,6 +228,23 @@ cartItem.onclick = () => {
                     return item;
                 }
             })   
+            if(arrProductCart.length == 0) 
+            sectionCart.innerHTML = `<h1 class = section-cart-notification>Don't have product</h1>`;
+            numberTotalCart(arrProductCart.length - 1);
+        }
+    })
+    btnBuy.forEach((btn,index) => {
+        btn.onclick = (e) => {  
+            alert("Cảm ơn bạn đã thanh toán hoá đơn !");
+            e.currentTarget.parentElement.parentElement.remove();
+            const idProduct = e.currentTarget.dataset.id;
+            arrProductCart = arrProductCart.filter((item) => {
+                if(item.stt != idProduct){
+                    return item;
+                }
+            })   
+            if(arrProductCart.length == 0) 
+            sectionCart.innerHTML = `<h1 class = section-cart-notification>Don't have product</h1>`;
             numberTotalCart(arrProductCart.length - 1);
         }
     })
@@ -245,8 +270,10 @@ const renderProductCart = (products) => {
             let productItem = menu[index];
             let text = false;
             arrProductCart.forEach((item,index) => {
-                if(item.stt === productItem.stt)
+                if(item.stt === productItem.stt){
                     text = true;
+                    alert("Products already in the cart");
+                }
             })
             if(text === false){
                 numberTotalCart(arrProductCart.length);
@@ -290,5 +317,5 @@ const renderProductInCart = (productItem) => {
     if(render !== "")
     sectionCart.innerHTML = render;
     if(render == "")
-    sectionCart.innerHTML = `<h1 class = section-cart-notification>Don't have product</h1>`
+    sectionCart.innerHTML = `<h1 class = section-cart-notification>Don't have product</h1>`;
 }
