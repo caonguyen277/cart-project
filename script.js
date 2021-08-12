@@ -163,7 +163,7 @@ const order = document.getElementsByClassName("order")[0];
 const cartNotification = document.querySelector('.section-cart-notification');
 
 const btnCategory = document.querySelectorAll('.name-product');
-
+let menuCategory = [];
 let arrProductCart = [];
 
 const numberCart = document.querySelector('.number-cart');
@@ -175,26 +175,46 @@ let btnBuy = [];
 
 let totalCart = 0;
 
+const pagination = document.querySelector('.pagination');
+let number = [];
 
 const modal = document.querySelector('.modal');
+
+const animation = document.querySelector('.set-animation');
+const animationImg = document.querySelector('.set-animation-img');
+const btnOnTop = document.querySelector('.btn-scroll-top');
 window.onload = () => {
+    
+    animation.style.opacity = "1";
+    animation.style.transform = "translateX(0)";
+    renderNumber(menu);
     wellcome.style.transform = "translateX(-320px)";
     setTimeout(() => { wellcome.style.transform = "translateX(0)";}, 1000);
-    displayMenuItem(menu);
+    displayMenuItem(menu.slice(0,12));
     products = document.querySelectorAll('.product-section');
     btnCategory.forEach( (item,index) => {
         item.addEventListener('click',(event) => {
             const category = event.currentTarget.dataset.id;
-            const menuCategory = menu.filter((menuItem) => {
+            menuCategory = menu.filter((menuItem) => {
                 if(menuItem.category === category){
                     return menuItem;
                 }
             })
             if(category === 'all'){
-                displayMenuItem(menu);
+                menuCategory = menu;
+                displayMenuItem(menu.slice(0,12));
+                renderNumber(menuCategory);
             }
             else
+            {
+                if(menuCategory.length >= 12){
+                displayMenuItem(menuCategory.slice(0,12));
+                renderNumber(menuCategory);}
+                else{
                 displayMenuItem(menuCategory);
+                renderNumber(menuCategory);
+                }
+            }
             products = document.querySelectorAll('.product-section');
             renderProductCart(products);
             
@@ -202,6 +222,49 @@ window.onload = () => {
     })
     renderProductCart(products);
 }
+window.onscroll = () => {
+
+    if(document.documentElement.scrollTop > 0 ){
+        cartItem.style.position = "fixed";
+        cartItem.style.top = "810px";
+        cartItem.style.right = "57px";
+        btnOnTop.style.opacity = "1";
+    }
+    else{
+    cartItem.style.top = "5px";
+    btnOnTop.style.opacity = "0";    
+    }
+}
+btnOnTop.onclick = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+const renderNumber = (menu) => {
+    let index = menu.length / 12;
+    let arr = [];
+    for(let i = 0; i < index ; i++){
+        arr.push(`
+      <li class="page-item"><a class="page-link">${i+1}</a></li>
+      `)
+    }
+    arr = arr.join();
+    pagination.innerHTML = arr;
+    number = document.querySelectorAll('.page-link');
+    number.forEach((item,index) => {    
+        item.addEventListener('click',(e) => {
+            let index = Number(e.currentTarget.innerHTML);
+            let itemId = index*12;
+            if(menu.length >= 12){
+            displayMenuItem(menu.slice((index-1)*12,index*12))
+            }
+            else{
+                displayMenuItem(menu.slice(0,menu.length))
+            }
+    
+        })
+    })
+}
+
 
 const numberTotalCart = (length) => {
     numberCart.innerHTML = length + 1 ;

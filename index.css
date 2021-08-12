@@ -2,19 +2,34 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: 'Atkinson Hyperlegible', sans-serif !important;
 }
 
-body{
-    background-image: linear-gradient(to right, #000000, #000 , #ffffff);
-}
 p{
     margin: 0px;
     padding: 0px;
 }
 #curve{
     position: absolute;
-    top: -185px;
-    z-index: -1;
+    top: -255px;
+    z-index: 1;
+}
+.btn-scroll-top{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-color: #282828;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 50px;
+    right: 50px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 10;
+    border-radius: 50%;
+    transition: all .3s;
 }
 .wellcome{
     position: fixed;
@@ -26,43 +41,39 @@ p{
     transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
  
 }
-.set-title{
-    color: #8e8e8e;
-    font-weight: 700 !important; 
-    font-size: 165%;
+/* ===========================section-background==================== */
+.set-animation{
+    opacity: 0;
+    transform: translateX(-160px);
+    transition: all 1s ;
+}
+.section-background{
     width: 100%;
-    letter-spacing: 3px;
-    text-align: center;
+    height: 100vh;
+    background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-black-background-picture-image_295063.jpg") ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
-.set-title span{
+.set-h1 {
+    letter-spacing: 2px;
+    font-size: 2.5rem;
+    color: #ffd59a ;
+}
+.set-h1 > span{
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-left: 20px;
     color: #e4dfd8;
 }
-.h3-menu-website{
-    color: #e4dfd8;
-    font-weight: 700 !important; 
-    padding: 20px;
-    border-bottom: 1px solid #616040;
+.section-img{
+    display: flex; 
+    justify-content: center;
+    margin-top: 50px;
 }
-
-.menu-website{
-    list-style: none;
-}
-
-.menu-website  li  a{
-    display: block;
-    text-decoration: none;
-    color: #616040;
-    padding: 20px 0px;
-    width: 300px;
-    margin: auto;
-    margin-bottom: 10px;
-    transition: all .3s;
-    background-color: #e4dfd8;
-    border-radius: 5px;
-}
-.menu-website > li > a:hover{
-    background-color: beige;
-    color: #232319;
+.section-img > img{
+    border-radius: 30%;
 }
 /* =========================modal======================== */
 .modal{
@@ -101,11 +112,11 @@ p{
 }
 .cart{
     position: absolute;
-    padding: 10px 0;
     cursor: pointer;
     right: 100px;
-    top: 50px;
-    z-index: 1;
+    top: 5px;
+    z-index: 10;
+    transition: all .3s;
 }
 
 .number-cart{
@@ -146,6 +157,49 @@ p{
     display: block;
 }
 /* ====================Product=================================== */
+.product-container{
+    background-image: linear-gradient(to right, #000000, #000 , #ffffff);
+}
+.set-title{
+    color: #ffd59a;
+    padding: 10px;
+    font-weight: 700 !important; 
+    font-size: 165%;
+    width: 100%;
+    letter-spacing: 3px;
+    text-align: center;
+    margin: 0 !important;
+}
+.set-title span{
+    color: #e4dfd8;
+}
+.h3-menu-website{
+    color: #e4dfd8;
+    font-weight: 700 !important; 
+    padding: 20px;
+    border-bottom: 1px solid #616040;
+}
+
+.menu-website{
+    list-style: none;
+}
+
+.menu-website  li  a{
+    display: block;
+    text-decoration: none;
+    color: #616040;
+    padding: 20px 0px;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 10px;
+    transition: all .3s;
+    background-color: #e4dfd8;
+    border-radius: 5px;
+}
+.menu-website > li > a:hover{
+    background-color: beige;
+    color: #232319;
+}
 .section-center{
     padding-bottom: 20px;
 }
@@ -184,6 +238,7 @@ p{
 }
 /* ===================================================================== */
 .banner-container{
+    background-color: #f1f4f8;
     padding: 100px 0;
 }
 .show-xs{ 
