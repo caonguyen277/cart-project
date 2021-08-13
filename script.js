@@ -200,6 +200,7 @@ window.onload = () => {
     renderNumber(menu);
   }
   products = document.querySelectorAll(".product-section");
+  console.log(products);
   btnCategory.forEach((item, index) => {
     item.addEventListener("click", (event) => {
       const category = event.currentTarget.dataset.id;
@@ -275,6 +276,7 @@ const functionNumber = (menu, numberItem) => {
   number = document.querySelectorAll(".page-link");
   number.forEach((item, index) => {
     item.addEventListener("click", (e) => {
+     
       let index = Number(e.currentTarget.innerHTML);
       let itemId = index * numberItem;
       if (menu.length >= numberItem) {
@@ -284,6 +286,8 @@ const functionNumber = (menu, numberItem) => {
       } else {
         displayMenuItem(menu.slice(0, menu.length));
       }
+      products = document.querySelectorAll(".product-section");
+      renderProductCart(products);
     });
   });
 };
