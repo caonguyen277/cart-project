@@ -342,6 +342,9 @@ footer{
         padding: 0 20px;
         text-align: center;
     }
+    .set-default-h1 {
+        text-align: center;
+    }
     .set-xs{
         display: none;
     }
