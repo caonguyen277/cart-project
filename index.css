@@ -14,6 +14,32 @@ p{
     top: -255px;
     z-index: 1;
 }
+.set-default-h1{
+    color: #cd7c0b;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    margin-bottom: 25px;
+}
+.set-default-p{
+    color: #654c00;
+    font-size: 130%;
+}
+.set-default-btn{
+    padding: 10px 20px;
+    background-color: #ffc77cad;
+    margin-left: 20px;
+    transition: all .3s ease-out;
+}
+.set-default-btn:hover{
+    background-color: #cd7c0b;
+    transform: translateY(-2px);
+    box-shadow: 1px 1px 0px 0px #00000080;
+}
+.div-btn{
+    margin-top: 60px;
+    text-align: center;
+}
+
 .btn-scroll-top{
     position: fixed;
     width: 50px;
@@ -31,6 +57,9 @@ p{
     z-index: 10;
     border-radius: 50%;
     transition: all .3s;
+}
+.btn-scroll-top:hover{
+    background-color: rgba(255, 199, 124, 0.68);
 }
 .wellcome{
     position: fixed;
@@ -71,7 +100,7 @@ p{
 .section-img{
     display: flex; 
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 65px;
 }
 .section-img > img{
     border-radius: 30%;
@@ -115,7 +144,7 @@ p{
     position: absolute;
     cursor: pointer;
     right: 47px;
-    top: 5px;
+    top: 7px;
     z-index: 10;
     transition: all .3s;
 }
@@ -123,12 +152,12 @@ p{
 .number-cart{
     color: white;
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 55%;
     top: -10%;
     right: -50%;
     background-color: black;
@@ -196,6 +225,7 @@ p{
     transition: all .3s;
     background-color: #e4dfd8;
     border-radius: 5px;
+    cursor: pointer;
 }
 .menu-website > li > a:hover{
     background-color: beige;
@@ -237,6 +267,11 @@ p{
     transform: scale(1.1);
     filter: brightness(55%) blur(2px);
 }
+.carousel-section{
+    overflow: hidden;
+    background-image: linear-gradient(to bottom, #000000, #000000 , #ffffff);
+    padding: 100px 0px;
+}
 /* ===================================================================== */
 .banner-container{
     background-image: linear-gradient(to bottom, #ffffff, rgb(255, 254, 254) , #000000);
@@ -255,12 +290,57 @@ p{
     width: 380px;
     padding: 20px 30px;
 }
+.set-ul-footer{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+.set-ul-footer > li > svg{
+    width: 30px;
+    height: 29px;
+    cursor: pointer;
+    color: #cd7c0b;
+}
+/* ============================carousel-section===================== */
+footer{
+    padding: 50px 0px;
+}
+.img-rotate{
+    position: absolute;
+    width: 100%; 
+    transform: rotate(0);
+    top: 30px;
+    left: 70px;
+    transition: all 10s;
+}
+.text-muted{
+    font-size: 110%;
+    margin-bottom: 1rem;
+}
+.text-gray-700 {
+    color: #506690!important;
+    font-size: 120%;
+    margin-bottom: 1rem;
+}
+.text-h6{
+    color: #506690!important;
+    font-size: 90%;
+    margin-bottom: 20px;
+}
 @media (max-width: 575.98px) { 
     .cart{
         right: 24px;
     }
     .btn-scroll-top{
+        top: 85vh;
         right: 18px;
+    }
+    .set-h1{
+        letter-spacing: 3px;
+        font-size: 1.5rem;
+        color: #ffd59a;
+        padding: 0 20px;
+        text-align: center;
     }
     .set-xs{
         display: none;
@@ -296,9 +376,6 @@ p{
     .set-height{
         height: 100% !important;
     }
-    /* .banner-container{
-        display: block;
-    } */
     .carousel-item > img{
         height: 290px !important;
     }
@@ -309,4 +386,11 @@ p{
     .menu-website > li > a {
         width: 100%;
     }
+    .img-rotate{
+        width: 75vw;
+        transform: rotate(0);
+        top: 22%;
+        left: 13%;
+    }
+    
  }

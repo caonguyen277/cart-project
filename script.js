@@ -199,8 +199,7 @@ window.onload = () => {
     displayMenuItem(menu.slice(0, 12));
     renderNumber(menu);
   }
-  products = document.querySelectorAll(".product-section");
-  console.log(products);
+  products = document.querySelectorAll(".product");
   btnCategory.forEach((item, index) => {
     item.addEventListener("click", (event) => {
       const category = event.currentTarget.dataset.id;
@@ -237,19 +236,30 @@ window.onload = () => {
           }
         }
       }
-      products = document.querySelectorAll(".product-section");
+      products = document.querySelectorAll(".product");
       renderProductCart(products);
     });
   });
   renderProductCart(products);
+  // =========================animation image Rotate ================================
+  
+  const imgRotate = document.querySelector('.img-rotate')
+  imgRotate.style.transform = `rotate(360deg)`;
+  let a = 1;
+    setInterval(() => {
+      a++;
+      imgRotate.style.transform = `rotate(${a * 360}deg)`;
+    }, 10000);
 };
 window.onscroll = () => {
   if (document.documentElement.scrollTop > 0) {
     cartItem.style.position = "fixed";
     cartItem.style.top = "84vh";
+    if (document.documentElement.offsetWidth < 500)
+    cartItem.style.top = "78vh";
     btnOnTop.style.opacity = "1";
   } else {
-    cartItem.style.top = "5px";
+    cartItem.style.top = "7px";
     btnOnTop.style.opacity = "0";
   }
 };
@@ -286,7 +296,7 @@ const functionNumber = (menu, numberItem) => {
       } else {
         displayMenuItem(menu.slice(0, menu.length));
       }
-      products = document.querySelectorAll(".product-section");
+      products = document.querySelectorAll(".product");
       renderProductCart(products);
     });
   });
@@ -371,8 +381,8 @@ const renderProductCart = (products) => {
 
 const displayMenuItem = (menuItem) => {
   let displayMenu = menuItem.map((item) => {
-    return `<div data-id = ${item.stt} class="pt-3 col-md-3 product-section">
-                    <div class="product">
+    return `<div class="pt-3 col-md-3 product-section">
+                    <div data-id = ${item.stt} class="product">
                         <img class="img-product" src=${item.src} alt="">
                         <div class="picture-title">
                             <p>Price: ${item.price}$</p>
